@@ -1,0 +1,9 @@
+django
+django-cors-headers
+numpy
+scikit-learn
+nltk
+bson
+pymongo
+tqdm
+djangorestframework_simplejwt

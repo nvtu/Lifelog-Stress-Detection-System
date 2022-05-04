@@ -1,24 +1,31 @@
 import React, { useState, useEffect } from 'react'
-import { GalleriaCard } from '../components/galleria/galleriaCard'
+import GalleriaCard from '../components/galleria/galleriaCard'
 import { connect } from 'react-redux'
+import { Row, Col, Card } from 'antd'
 
 
 function GalleriaContainer(props) {    
 
-    useEffect(() => {
-        console.log(props.auth)
-    }, [props.auth.access])
-
     return (
-        <div>
-            <GalleriaCard />
-        </div>
+        <Row gutter={[16, 24]} style={{ margin: "0 auto", padding: "5px" }}>
+            {
+                props.galleria.images.length > 0 ? 
+                props.galleria.images.map((images, id) => {
+                    return (
+                        <Col className="gutter-row" span={6}>
+                            <GalleriaCard key={id} images={images} />
+                        </Col>
+                    )
+                })
+                : <div>No images to display</div>
+            }
+        </Row>
     )
 }
 
 
 const mapStateToProps = (state) => ({
-    auth: state.auth,
+    galleria: state.galleria,
 })
 
 export default connect(mapStateToProps)(GalleriaContainer)

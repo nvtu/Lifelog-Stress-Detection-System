@@ -16,3 +16,5 @@ code {
   width: 100wh; 
   height: 100vh;
 }
+
+svg { vertical-align: baseline; }

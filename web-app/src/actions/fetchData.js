@@ -28,3 +28,20 @@ export const fetchData = (api, method, params) => {
         }
     };
 }
+
+
+export const fetchBlobImage = (method, imageURL, authToken) => {
+    return async (dispatch) => {
+        const response = await axios({
+            method: method,
+            url: imageURL,
+            responseType: 'blob',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authToken}`,
+            }
+        })
+        const url = window.URL.createObjectURL(new Blob([response.data]))
+        return url
+    }
+}

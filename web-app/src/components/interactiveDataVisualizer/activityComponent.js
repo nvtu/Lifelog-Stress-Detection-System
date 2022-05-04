@@ -1,11 +1,7 @@
-import React, { useState } from 'react'
-import { Chart } from 'primereact/chart'
-import { COLOR_HEADER } from '../constants/ColorConstant';
+import React, { useState } from 'react';
+import { Chart } from 'primereact/chart';
 
-
-export function DataSummaryContainer(props) {
-    const [activeIndex, setActiveIndex] = useState(0);
-
+const ActivityRadar = () => {
     const [chartData] = useState({
         labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
         datasets: [
@@ -46,18 +42,12 @@ export function DataSummaryContainer(props) {
     });
 
     return (
-        <div style={props.style}>
-            <Chart type="radar"
-                data={chartData}
-                options={lightOptions}
-                style={{
-                    position: 'absolute',
-                    width: '100%',
-                    height: "100%",
-                    padding: "10px",
-                    marginTop: "20px",
-                }}
-            />
+        <div style={{ margin: "5%" }}>
+            <h5>Activity Analysis</h5>
+            <Chart type="radar" data={chartData} options={lightOptions} 
+                style={{ position: 'relative', width: '100%', height: "100%" }} />
         </div>
-    )
+   );
 }
+
+export default ActivityRadar;

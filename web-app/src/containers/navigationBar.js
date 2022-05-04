@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { ButtonTieredMenu } from "../components/navigationBar/buttonTieredMenu"
 import { SearchBar } from '../components/navigationBar/searchBar'
 import { COLOR_HEADER } from "../constants/ColorConstant"
@@ -12,19 +12,29 @@ function NavigationBar(props) {
     const [logined, setLogined] = useState(false);
     const [visible, setVisible] = useState(false);
 
+
+    useEffect(() => {
+        if (props.auth.accessToken !== '') {
+            setLogined(true);
+        }
+        else setLogined(false);
+    }, [props.auth.accessToken])
+
     const onCreate = () => {
         setVisible(!visible); // Hide the login form    
-        setLogined(!logined); // Set the login status to true
     };    
 
     const onLogout = () => {
-        setLogined(!logined); // Set the login status to false
         const params = {
             'username': '',
             'access': '',
             'refresh': '',
         }
         props.dispatch(setAuthToken(params.access, params.refresh))
+        // Remove the token from localStorage
+        sessionStorage.removeItem('username')
+        sessionStorage.removeItem('accessToken')
+        sessionStorage.removeItem('refreshToken')
     }
 
 
@@ -75,6 +85,8 @@ function NavigationBar(props) {
 }
 
 
-const mapStateToProps = (state) => ({})
+const mapStateToProps = (state) => ({
+    auth: state.auth,
+})
 
 export default connect(mapStateToProps)(NavigationBar)

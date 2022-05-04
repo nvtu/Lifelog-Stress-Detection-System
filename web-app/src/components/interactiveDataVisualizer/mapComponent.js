@@ -2,7 +2,7 @@ import React from 'react'
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
 
 
-export function Map(props) {
+function Map(props) {
 
     return (
         <MapContainer 
@@ -23,3 +23,6 @@ export function Map(props) {
         </MapContainer>
     )
 }
+
+
+export default Map;

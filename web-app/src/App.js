@@ -1,11 +1,26 @@
 import './App.css';
+import React, { useEffect } from 'react' 
+import { setAuthToken } from './actions/actionAuthToken';
 import NavigationBar from './containers/navigationBar';
-import { Map } from './containers/mapContainer'
-import { DataSummaryContainer } from './containers/dataSummaryContainer';
+import FilterPanelContainer from './containers/filterPanelContainer';
+import InteractiveDataVisualizerContainer from './containers/interactiveDataVisContainer';
 import GalleriaContainer from './containers/galleriaContainer';
 import { COLOR_HEADER } from './constants/ColorConstant';
+import { PropertySafetyFilled } from '@ant-design/icons';
+import { connect } from 'react-redux'
 
-function App() {
+function App(props) {
+
+	useEffect(() => {
+		if ('accessToken' in sessionStorage) {
+			const access = sessionStorage.getItem('accessToken');
+			const refresh = sessionStorage.getItem('refreshToken');
+			const username = sessionStorage.getItem('username');
+			props.dispatch(setAuthToken(username, access, refresh));
+		}
+	}, []);
+
+
 	return (
 		<div className="App">
 
@@ -16,12 +31,11 @@ function App() {
 						height: "50px",
 						width: "80%",
 						position: "fixed",
-						zIndex: "9999"
+						zIndex: "2"
 					}}
 				/>
 				<div
 					style={{
-						backgroundColor: "#E7E7E7",
 						width: "80%",
 						height: "100%",
 						position: "relative",
@@ -39,9 +53,14 @@ function App() {
 						position: "fixed",
 						borderLeft: "1px solid black"
 					}}>
-					<Map style={{ height: "350px" }} />
-					<DataSummaryContainer 
-						style={{ height: "100%", borderTop: "1px solid black" }} 
+					{/* <Map style={{ height: "350px" }} /> */}
+					<FilterPanelContainer style={{
+						margin: "0 auto",
+						marginBottom: "10px"
+					}} />
+
+					<InteractiveDataVisualizerContainer
+						style={{ height: "100%", borderTop: "1px solid black", alignItems: "center" }}
 					/>
 				</div>
 			</div>
@@ -49,4 +68,9 @@ function App() {
 	);
 }
 
-export default App;
+
+const mapStateToProps = (state) => ({
+
+})
+
+export default connect(mapStateToProps)(App);

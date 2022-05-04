@@ -28,7 +28,7 @@ root.render(
 			/>
 
 			{/* <!-- Leaflet --> */}
-			<link rel="stylesheet" 
+			<link rel="stylesheet"
 				href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
 				integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
 				crossorigin="" />
@@ -46,6 +46,9 @@ root.render(
 			<link rel="stylesheet" href="https://unpkg.com/primereact/resources/themes/lara-light-indigo/theme.css" />
 			<link rel="stylesheet" href="https://unpkg.com/primereact/resources/primereact.min.css" />
 			<link rel="stylesheet" href="https://unpkg.com/primeflex@2.0.0/primeflex.min.css" />
+			<script src="https://unpkg.com/primereact/core/core.min.js"></script>
+			<script src="https://unpkg.com/primereact/card/card.min.js"></script>
+
 
 			{/* <!-- Dependencies --> */}
 			<script src="https://unpkg.com/react/umd/react.production.min.js"></script>
@@ -54,9 +57,25 @@ root.render(
 			<script src="https://unpkg.com/react-transition-group@4.4.2/dist/react-transition-group.js"></script>
 			<script src="https://unpkg.com/primereact/galleria/galleria.min.js"></script>
 
+			{/* <!-- Rechart.js --> */}
+			{/* <script src="https://unpkg.com/react/umd/react.production.min.js"></script>
+			<script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
+			<script src="https://unpkg.com/prop-types/prop-types.min.js"></script>
+			<script src="https://unpkg.com/recharts/umd/Recharts.js"></script>
+ */}
 			{/* <!-- Demo --> */}
 			<script src="https://unpkg.com/primereact/core/core.min.js"></script>
 			<script src="https://unpkg.com/primereact/slider/slider.min.js"></script>
+
+			{/* // Plots */}
+			<script type="text/javascript" src="https://unpkg.com/@ant-design/plots@latest/dist/plots.min.js"></script>
+			{/* // Flowchart */}
+			<script type="text/javascript" src="https://unpkg.com/@ant-design/flowchart@latest/dist/flowchart.min.js"></script>
+			{/* // Maps */}
+			<script type="text/javascript" src="https://unpkg.com/@ant-design/maps@latest/dist/maps.min.js"></script>
+			{/* // Graphs */}
+			<script type="text/javascript" src="https://unpkg.com/@ant-design/graphs@latest/dist/graphs.min.js"></script>
+
 			<App />
 		</Provider>
 	</React.StrictMode>

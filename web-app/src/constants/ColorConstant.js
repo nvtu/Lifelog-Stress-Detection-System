@@ -1,1 +1,1 @@
-export const COLOR_HEADER = "#485696";
+export const COLOR_HEADER = "#446DF6";

@@ -21,6 +21,12 @@ function LoginForm(props) {
             .then(res => {
                 const { access, refresh } = res
                 props.dispatch(setAuthToken(username, access, refresh))
+
+                // Cache the token in localStorage
+                sessionStorage.setItem('username', username)
+                sessionStorage.setItem('accessToken', access)
+                sessionStorage.setItem('refreshToken', refresh)
+
                 notification.success({
                     message: 'Login Success',
                     description: 'Welcome to the Lifelog Stress Detection System',
